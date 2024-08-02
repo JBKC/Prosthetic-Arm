@@ -16,6 +16,7 @@ async def gyro_stream(buffer, ser):
     try:
         while True:
             data = ser.readline().decode('utf-8').strip().split(',')
+            # print(data)
             buffer.append((float(data[0]),float(data[1]))) # save (x,y) gyro data
 
             # yield control back to event loop after callback has been executed
@@ -53,7 +54,6 @@ async def pygame_display(buffer):
         if buffer:
             data = buffer[-1]  # Get the most recent data
             buffer.clear()  # Clear the buffer
-            print(data)
 
             if data is not None:
                 # convert gyro data to onscreen image
@@ -66,7 +66,6 @@ async def pygame_display(buffer):
         await asyncio.sleep(0)
 
     pygame.quit()
-
 
 
 async def main():
