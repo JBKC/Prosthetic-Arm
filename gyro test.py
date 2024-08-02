@@ -1,5 +1,5 @@
 '''
-Translate gyro inputs into pygame onscreen input
+Translate accelerometer inputs into pygame onscreen input
 '''
 
 import asyncio
