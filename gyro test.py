@@ -1,5 +1,6 @@
 '''
 Translate accelerometer inputs into pygame onscreen input
+Runs Python 3.12
 '''
 
 import asyncio
