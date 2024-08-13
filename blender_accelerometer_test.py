@@ -1,28 +1,36 @@
-'''
-NOTE - Python 3.10, Blender v3.6
-'''
-
 import bpy
-import serial
-
-arduino_port = '/dev/tty.usbmodem14201'
-baud_rate = 115200
-
-ser = serial.Serial(arduino_port, baud_rate)
+import math
 
 
 def update_arm():
-    while True:
-        data = ser.readline().decode('utf-8').strip().split(',')
-        x, y, z = map(float, data)
+    obj = bpy.data.objects.get('Cube')
 
-        # Update arm rotation based on accelerometer data
-        bpy.data.objects['Arm'].rotation_euler = (x, y, z)
-
-
-def main():
-    update_arm()
+    if obj:
+        obj.rotation_euler = (math.radians(20), math.radians(30), math.radians(60))
+        bpy.context.view_layer.update()
+        print('Object updated')
+    else:
+        print('Object not found')
 
 
-if __name__ == '__main__':
-    main()
+class SimpleOperator(bpy.types.Operator):
+    bl_idname = "object.simple_operator"
+    bl_label = "Simple Object Operator"
+
+    def execute(self, context):
+        update_arm()
+        return {'FINISHED'}
+
+
+def register():
+    bpy.utils.register_class(SimpleOperator)
+
+
+def unregister():
+    bpy.utils.unregister_class(SimpleOperator)
+
+
+if __name__ == "__main__":
+    register()
+    # Test call
+    bpy.ops.object.simple_operator()
