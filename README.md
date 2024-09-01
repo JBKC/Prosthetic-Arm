@@ -1,5 +1,7 @@
 # Prosthetic Arm
 
+(currently on pause)
+
 Steps:
 1. create digital twin of arm and map broad movements using accelerometer
 2. map hand grasp / open using EMG
