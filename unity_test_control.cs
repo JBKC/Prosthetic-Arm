@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class testControl : MonoBehaviour
 {
-    // Public variables for each finger joint, allowing you to assign these in Unity
+    // Public variables for each finger joint
     public Transform thumbJoint;
     public Transform indexJoint;
     public Transform middleJoint;
     public Transform ringJoint;
     public Transform pinkyJoint;
 
-    // Rotation angle sliders for each finger (between -90 and 90 degrees)
+    // Rotation angle sliders for each finger
     [Range(-60, 0)] public float thumbAngle = 0;
     [Range(-150, 0)] public float indexAngle = 0;
     [Range(-150, 0)] public float middleAngle = 0;
@@ -19,7 +19,7 @@ public class testControl : MonoBehaviour
     // Update method to apply rotations every frame
     void Update()
     {
-        // Rotating each finger joint based on the angle you set in the Inspector
+        // Rotating each finger joint via sliders in Unity
         if (thumbJoint != null) thumbJoint.localRotation = Quaternion.Euler(thumbAngle, thumbAngle, thumbAngle);
         if (indexJoint != null) indexJoint.localRotation = Quaternion.Euler(0, indexAngle, 0);
         if (middleJoint != null) middleJoint.localRotation = Quaternion.Euler(0, middleAngle, 0);
