@@ -1,4 +1,4 @@
-# Prosthetic Arm
+# Cybernetic Arm
 
 Steps:
 1. create digital twin of arm and map broad movements using accelerometer
